@@ -1,0 +1,27 @@
+﻿<Page x:Class="UWUVCI_VWII.UI.Frames.ThemeList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UWUVCI_VWII.UI.Frames"
+       mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="1130"
+      Title="SettingsFrame" >
+
+    <Grid>
+        <Label Margin="10" Content="No Themes found." FontSize="20"  Height="460" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1110" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="NoTheme" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="480" VerticalAlignment="Top" Width="1130" Name="ThemeDisplay">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Filters:" Width="68"></TextBlock>
+                <RadioButton Content="EU Compatible" Width="127" IsChecked="True" GroupName="region" Click="RadioButton_Click_1"  />
+                <RadioButton Content="US Compatible" Width="127" GroupName="region"  Click="RadioButton_Click" Name="usR"/>
+                <RadioButton Content="JP Compatible" Width="127" GroupName="region" Name="jpR" Click="jpR_Click"/>
+
+            </StackPanel>
+            <Grid Name="stuff">
+                
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</Page>
