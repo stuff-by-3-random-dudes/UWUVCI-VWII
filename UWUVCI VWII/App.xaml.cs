@@ -29,7 +29,24 @@ namespace UWUVCI_VWII
             var github = new GitHubClient(new ProductHeaderValue("UWUVCI-VWII"));
             try
             {
-              var content =  await github.Repository.Content.GetAllContents("Hotbrawl20", "UWUVCI-VWII-THEMES", "json");
+                if (!Directory.Exists("bin"))
+                {
+                    Directory.CreateDirectory("bin");
+                }
+                if (!Directory.Exists("bin/vwii"))
+                {
+                    Directory.CreateDirectory("bin/vwii");
+                }
+                if (!Directory.Exists("bin/vwii/json"))
+                {
+                    Directory.CreateDirectory("bin/vwii/json");
+                }
+                else
+                {
+                    Directory.Delete("bin/vwii/json", true);
+                    Directory.CreateDirectory("bin/vwii/json");
+                }
+                var content =  await github.Repository.Content.GetAllContents("Hotbrawl20", "UWUVCI-VWII-THEMES", "json");
                foreach(var c in content)
                 {
                    
@@ -37,18 +54,7 @@ namespace UWUVCI_VWII
 
                     {
                         var currDir = Directory.GetCurrentDirectory();
-                        if (!Directory.Exists("bin"))
-                        {
-                            Directory.CreateDirectory("bin");
-                        }
-                        if (!Directory.Exists("bin/vwii"))
-                        {
-                            Directory.CreateDirectory("bin/vwii");
-                        }
-                        if (!Directory.Exists("bin/vwii/json"))
-                        {
-                            Directory.CreateDirectory("bin/vwii/json");
-                        }
+                        
                         Directory.SetCurrentDirectory(Path.Combine(currDir, "bin", "vwii", "json"));
                         client.DownloadFileAsync(new Uri(c.DownloadUrl), c.Name);
                         Directory.SetCurrentDirectory(currDir);
